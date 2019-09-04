@@ -54,22 +54,49 @@ public class ToDoList {
 				case "add":
 					if (argLeng != 1) {
 						printArgErrMsg();
+						break;
 					}
+					Task t1 = new Task(cmdArr[1]);
+					addTask(t1);
+					printAddMsg(t1);
 					break;
+					
 				case "view":
 					if (argLeng != 1) {
 						printArgErrMsg();
+						break;
 					}
+					Task t2 = getTask(cmdArr[1]);
+					if (t2 == null) {
+						printArgErrMsg();
+						break;
+					}
+					printViewMsg(t2);
 					break;
+					
 				case "edit":
 					if (argLeng != 2) {
 						printArgErrMsg();
+						break;
 					}
+					Task t3 = getTask(cmdArr[1]);
+					if (t3 == null) {
+						printArgErrMsg();
+						break;
+					}
+					
 					break;
 				case "delete":
 					if (argLeng != 1) {
 						printArgErrMsg();
+						break;
 					}
+					Task t4 = getTask(cmdArr[1]);
+					if (t4 == null) {
+						printArgErrMsg();
+					}
+					removeTask(t4.getDescription());
+					printDeleteMsg(t4);
 					break;
 			}
 		}
@@ -89,5 +116,24 @@ public class ToDoList {
 	
 	private static void printArgErrMsg() {
 		System.out.println("Illegal paramenters.");
+	}
+	
+	private static void printAddMsg(Task task) {
+		System.out.println("A new task has been added.");
+		System.out.println(task.toString());
+	}
+	
+	private static void printViewMsg(Task task) {
+		System.out.println("The task details is as follow:");
+		System.out.println(task.toString());
+	}
+	
+	private static void printEditMsg(Task task) {
+		System.out.println("The task has been edited with the following details:");
+		System.out.println(task.toString());
+	}
+	
+	private static void printDeleteMsg(Task task) {
+		System.out.println("The task," + task.getDescription() + " has been removed.");
 	}
 }
