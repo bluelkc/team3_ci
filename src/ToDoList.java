@@ -32,7 +32,10 @@ public class ToDoList {
 	public Task editTask(String old_desc, String new_desc) {
 		Task tOld= tasks.get(old_desc);
 		if(tOld != null ) {
-			tOld.setDescription(new_desc);
+			Task tNew = new Task(new_desc, tOld.isComplete());
+			tasks.remove(tOld.getDescription());
+			tasks.put(tNew.getDescription(), tNew);
+			return tNew;
 		}
 		return tOld;		 
 	}
@@ -102,6 +105,7 @@ public class ToDoList {
 					Task t4 = tdl.getTask(cmdArr[1]);
 					if (t4 == null) {
 						printArgErrMsg();
+						break;
 					}
 					tdl.removeTask(t4.getDescription());
 					printDeleteMsg(t4);
