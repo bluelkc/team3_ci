@@ -28,4 +28,9 @@ public class Task {
 		this.isComplete = isComplete;
 	}
 
+	@Override
+	public String toString() {
+		return "Task [description= " + description + ", isComplete= " + isComplete + "]";
+	}
+
 }

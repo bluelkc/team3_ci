@@ -8,16 +8,16 @@ import junit.framework.*;
 public class ToDoListTest extends TestCase{
 	// Define Test Fixtures
 
-	
+
 	public ToDoListTest() {
 		super();
 	}
 	@Before
-	 public void setUp() throws Exception{
-		//Initialise Test Fixtures
+	public void setUp() throws Exception{
+		// Initialise Test Fixtures
 	}
 	@After
-	 public void tearDown() throws Exception{
+	public void tearDown() throws Exception{
 		// Uninitialise test Fixtures
 	}
 

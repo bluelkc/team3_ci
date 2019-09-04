@@ -26,7 +26,6 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 	}
 	public Collection<Task> getAllTasks() {
 		return tasks.values();
-		return null;
 	}
 	public Collection<Task> getCompletedTasks() {
 		// Add code here
