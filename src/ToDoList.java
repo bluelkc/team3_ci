@@ -29,6 +29,13 @@ public class ToDoList {
 	public Task removeTask(String description) {
 		return tasks.remove(description);
 	}
+	public Task editTask(String old_desc, String new_desc) {
+		Task tOld= tasks.get(old_desc);
+		if(tOld != null ) {
+			tOld.setDescription(new_desc);
+		}
+		return tOld;		 
+	}
 	public Collection<Task> getAllTasks() {
 		return tasks.values();
 	}
@@ -41,8 +48,9 @@ public class ToDoList {
 		return completedTasks;
 	}
 	
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in); 
+		ToDoList tdl = new ToDoList();
 		while(true) {
 			printMainMenu();
 			String cmd = sc.nextLine();
@@ -57,7 +65,7 @@ public class ToDoList {
 						break;
 					}
 					Task t1 = new Task(cmdArr[1]);
-					addTask(t1);
+					tdl.addTask(t1);
 					printAddMsg(t1);
 					break;
 					
@@ -66,7 +74,7 @@ public class ToDoList {
 						printArgErrMsg();
 						break;
 					}
-					Task t2 = getTask(cmdArr[1]);
+					Task t2 = tdl.getTask(cmdArr[1]);
 					if (t2 == null) {
 						printArgErrMsg();
 						break;
@@ -79,23 +87,23 @@ public class ToDoList {
 						printArgErrMsg();
 						break;
 					}
-					Task t3 = getTask(cmdArr[1]);
+					Task t3 = tdl.editTask(cmdArr[1], cmdArr[2]);
 					if (t3 == null) {
 						printArgErrMsg();
-						break;
+					} else {
+						printEditMsg(t3);
 					}
-					
 					break;
 				case "delete":
 					if (argLeng != 1) {
 						printArgErrMsg();
 						break;
 					}
-					Task t4 = getTask(cmdArr[1]);
+					Task t4 = tdl.getTask(cmdArr[1]);
 					if (t4 == null) {
 						printArgErrMsg();
 					}
-					removeTask(t4.getDescription());
+					tdl.removeTask(t4.getDescription());
 					printDeleteMsg(t4);
 					break;
 			}
