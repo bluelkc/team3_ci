@@ -6,6 +6,9 @@ import junit.framework.*;
 
 
 public class ToDoListTest extends TestCase{
+	// Define Test Fixtures
+
+
 	private Task task1;
 	private Task task2;
 	private Task task3;
@@ -15,7 +18,8 @@ public class ToDoListTest extends TestCase{
 		super();
 	}
 	@Before
-	 public void setUp() throws Exception{
+	public void setUp() throws Exception{
+		// Initialise Test Fixtures
 		task1 = new Task ("desc 1");
 		task2 = new Task ("desc 2");
 		task3 = new Task ("desc 3");
@@ -23,7 +27,8 @@ public class ToDoListTest extends TestCase{
 		todoList = new ToDoList();
 	}
 	@After
-	 public void tearDown() throws Exception{
+	public void tearDown() throws Exception{
+		// Uninitialise test Fixtures
 		task1 = null;
 		task2 = null;
 		task3 = null;
