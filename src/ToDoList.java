@@ -29,6 +29,13 @@ public class ToDoList {
 	public Task removeTask(String description) {
 		return tasks.remove(description);
 	}
+	public Task editTask(String old_desc, String new_desc) {
+		Task tOld= tasks.get(old_desc);
+		if(tOld != null ) {
+			tOld.setDescription(new_desc);
+		}
+		return tOld;		 
+	}
 	public Collection<Task> getAllTasks() {
 		return tasks.values();
 	}
